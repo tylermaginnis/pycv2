@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Your Customer - Software Excellence</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Professional software maintenance and development services by Perfect Your Customer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <meta name="theme-color" content="#2563eb">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="brand">
+                <img src="assets/chimney.svg" alt="Company Logo" class="logo">
+                <div class="brand-text">
+                    <h1 class="title">Perfect Your Customer <a href="tel:12029488888" class="cta-button secondary" style="font-size:1rem;">+1 (202) 948-8888</a></h1>
+                    <p class="tagline">Enhancing Digital Performance</p>
+                </div>
+            </div>
+            <nav class="navigation">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <script type="text/javascript">
+// Initialize after DOM loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Scroll CTA
+    const scrollCta = document.querySelector('.hero-scroll-cta');
+    if (scrollCta) {
+        scrollCta.addEventListener('click', () => scrollToSection('.platform-details'));
+    }
+
+    // Optional: Add to other elements that need smooth scrolling
+    document.querySelectorAll('[data-scroll-to]').forEach(button => {
+        button.addEventListener('click', () => {
+            scrollToSection(button.dataset.scrollTo);
+        });
+    });
+});
+document.addEventListener('click', function(event) {
+    const platform = event.target.closest('.platform');
+    const backButton = event.target.closest('.back-button');
+    const scrollCta = event.target.closest('.hero-scroll-cta');
+    const archTab = event.target.closest('.architectural-tab');
+
+    if (platform) {
+        event.preventDefault();
+        showPlatformContent(platform.dataset.platform);
+    } else if (backButton) {
+        event.preventDefault();
+        resetToOriginalContent();
+    } else if (scrollCta) {
+        event.preventDefault();
+        const platformDetails = document.querySelector('.platform-details');
+        if (platformDetails) {
+            platformDetails.classList.add('collapsed');
+            {{ edit_1 }}
+        }
+    } else if (archTab) {
+        event.preventDefault();
+        const platformDetails = document.querySelector('.platform-details');
+        if (platformDetails) {
+            platformDetails.classList.remove('collapsed');
+            {{ edit_2 }}
+        }
+    }
+});
+// Your existing function
+function scrollToSection(selector) {
+    const section = document.querySelector(selector);
+    if (section) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+        
+        // Visual feedback
+        section.classList.add('section-highlight');
+        setTimeout(() => section.classList.remove('section-highlight'), 2000);
+    }
+}
+            document.addEventListener('DOMContentLoaded', function() {
+        
+            // Store original hero content
+            const originalHeroContent = document.querySelector('.hero-content').innerHTML;
+        
+            // Handle platform clicks using event delegation
+            document.getElementById('home').addEventListener('click', function(event) {
+                const platform = event.target.closest('.platform');
+                const backButton = event.target.closest('.back-button');
+                
+                if (platform) {
+                    event.preventDefault();
+                    const platformType = platform.dataset.platform;
+                    showPlatformContent(platformType);
+                } else if (backButton) {
+                    event.preventDefault();
+                    resetToOriginalContent();
+                }
+            });
+        
+            <!-- Update platformTemplates in JavaScript -->
+const platformTemplates = {
+    architecture: `
+<div class="platform-hero architecture">
+    <div class="hero-content">
+        <div class="hero-text">
+
+            <button class="back-button" aria-label="Return to all platforms">
+                <svg class="back-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                All Platforms
+            </button>           
+            <h1 class="hero-title">Architectural Excellence</h1>
+            <p class="hero-subtitle">Future-proof system design & enterprise-grade solutions</p>
+            <div class="hero-cta-group">
+                <a href="#contact" class="cta-button">Schedule Consultation</a>
+            </div>
+        </div>
+        <div class="platform-highlights">
+            <div class="highlight-card gradient-card">
+                <div class="card-icon">
+                    <img src="assets/architecture/scalability.svg" alt="Scalability" loading="lazy">
+                </div>
+                <h3>Elastic Scalability</h3>
+                <p>Auto-scaling architectures that adapt to your business demands</p>
+                <div class="card-hover-content">
+                    <ul class="feature-list" style="list-style-type:none;">
+                        <li>Horizontal scaling patterns</li>
+                        <li>Load-balanced clusters</li>
+                        <li>Serverless ready</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-card gradient-card">
+                <div class="card-icon">
+                    <img src="assets/architecture/security.svg" alt="Security" loading="lazy">
+                </div>
+                <h3>Zero-Trust Security</h3>
+                <p>End-to-end encrypted data pipelines and IAM policies</p>
+                <div class="card-hover-content">
+                    <ul class="feature-list" style="list-style-type:none;">
+                        <li>SOC 2 compliant designs</li>
+                        <li>Real-time threat detection</li>
+                        <li>RBAC implementations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="platform-details glassmorphic-card">
+    <div class="detail-card approach-process">
+        <h2>Design</h2>
+        <div class="">
+            <div class="approach-step">
+
+                <div class="step-content">
+                    <h3>Solution Architects</h3>
+                    <ul class="step-features">
+                        <li>Requirements gathering</li>
+                        <li>System design</li>
+                        <li>Technology selection</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="approach-step">
+
+                <div class="step-content">
+                    <h3>Cloud Architects</h3>
+                    <ul class="step-features">
+                        <li>Cloud strategy</li>
+                        <li>Infrastructure design</li>
+                        <li>Cost optimization</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="approach-step">
+
+                <div class="step-content">
+                    <h3>Data Architects</h3>
+                    <ul class="step-features">
+                        <li>Data modeling</li>
+                        <li>Database design</li>
+                        <li>Data governance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="approach-step">
+
+                <div class="step-content">
+                    <h3>Security Architects</h3>
+                    <ul class="step-features">
+                        <li>Security strategy</li>
+                        <li>Compliance design</li>
+                        <li>Risk assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+`,
+
+    mobile: `
+        <div class="platform-hero mobile">
+            <div class="hero-text">
+                <h2 class="hero-title">Mobile Mastery</h2>
+                <p class="hero-subtitle">Native & cross-platform excellence</p>
+            <button class="back-button" aria-label="Return to all platforms">
+                <svg class="back-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                All Platforms
+            </button>            </div>
+            <div class="device-mockups">
+                <img src="assets/mobile/iphone.svg" alt="iPhone" class="iphone">
+                <img src="assets/mobile/android.svg" alt="Android" class="android">
+            </div>
+        </div>
+
+      <section class="platform-details glassmorphic-card">
+                        <h2>Mobile Excellence</h2>
+
+    <div class="detail-card approach-process">
+        <div class="approach-process">
+            <div class="approach-step">
+
+                <div class="step-content">
+                    <h3>Native Developers</h3>
+                    <ul class="step-features">
+                        <li>Platform-specific development</li>
+                        <li>Hardware integration</li>
+                        <li>App Store optimization</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="approach-step">
+
+                <div class="step-content">
+                    <h3>Cross-Platform</h3>
+                    <ul class="step-features">
+                        <li>Shared codebase</li>
+                        <li>Multi-platform support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="approach-step">
+
+                <div class="step-content">
+                    <h3>Performance</h3>
+                    <div class="metric-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">60fps</div>
+                            <p>Guaranteed smooth animations</p>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">&lt;100ms</div>
+                            <p>API response times</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+    `,
+    web: `
+<section class="platform-hero web-hero">
+    <div class="hero-container">
+<article class="hero-content" style="display: flex; flex-direction: column; align-items: flex-start;">
+    <button class="back-button" aria-label="Return to all platforms">
+        <svg class="back-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+        </svg>
+        All Platforms
+    </button>
+    
+    <header class="hero-text" style="margin-top: 1rem;">
+        <h1 class="hero-title">Web Innovation Platform</h1>
+        <p class="hero-subtitle">Crafting Next-Generation Web Experiences</p>
+    </header>
+
+    <div class="web-metrics" style="margin-top: 1rem;">
+        <div class="metric-card">
+            <div class="metric-value">100/100</div>
+            <div class="metric-details">
+                <h3 class="metric-title">Lighthouse Performance</h3>
+                <p class="metric-description">Industry-leading optimization scores</p>
+            </div>
+        </div>
+        <div class="metric-card" style="margin-top: 0rem;">
+            <div class="metric-value">99.9%</div>
+            <div class="metric-details">
+                <h3 class="metric-title">Uptime Reliability</h3>
+                <p class="metric-description">Guaranteed service availability</p>
+            </div>
+        </div>
+    </div>
+</article>
+
+
+    </div>
+</section>
+
+
+    <section class="platform-details glassmorphic-card">
+                                <h2>Web Excellence</h2>
+<div class="web-specialties approach-process">
+    <div class="approach-step">
+
+        <div class="step-content">
+            <h3>Frontend Developers</h3>
+            <ul class="step-features">
+                <li>User interface design</li>
+                <li>Interactive experiences</li>
+                <li>Progressive web apps</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="approach-step">
+
+        <div class="step-content">
+            <h3>Backend Developers</h3>
+            <ul class="step-features">
+                <li>Server-side logic</li>
+                <li>API development</li>
+                <li>Real-time systems</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="web-showcase">
+    <div class="approach-step">
+
+        <div class="step-content">
+            <h3>Technology Specialists</h3>
+            <ul class="step-features">
+                <li>
+                    <img src="assets/web/generic-framework.svg" alt="Framework">
+                    <span>Modern Frameworks</span>
+                </li>
+                <li>
+                    <img src="assets/web/generic-language.svg" alt="Language">
+                    <span>Robust Development Tools</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    </section>
+`,
+
+desktop: `
+    <div class="platform-hero desktop">
+        
+        <div class="hero-text">
+            <h2 class="hero-title">Desktop Solutions</h2>
+            <p class="hero-subtitle">Native performance meets cross-platform</p>
+            <button class="back-button" aria-label="Return to all platforms">
+                <svg class="back-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+                All Platforms
+            </button>        </div>
+        <div class="os-icons">
+            <img src="assets/desktop/windows.svg" alt="Windows">
+            <img src="assets/desktop/macos.svg" alt="macOS">
+            <img src="assets/desktop/linux.svg" alt="Linux">
+        </div>
+    </div>
+
+    <section class="platform-details  glassmorphic-card">
+                                <h2>Desktop Excellence</h2>
+
+<div class="desktop-features approach-process">
+    <div class="approach-step">
+
+        <div class="step-content">
+            <h3>Native Developers</h3>
+            <ul class="step-features">
+                <li>Platform-specific development</li>
+                <li>Hardware integration</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="approach-step">
+
+        <div class="step-content">
+            <h3>Cross-Platform Developers</h3>
+            <ul class="step-features">
+                <li>Multi-platform support</li>
+                <li>Universal binaries</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="approach-step">
+
+        <div class="step-content">
+            <h3>Performance Engineers</h3>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value">Native</div>
+                    <p>100%</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">Cross-Platform</div>
+                    <p>100%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </section>
+`
+};
+
+        
+// Modified transition functions
+function showPlatformContent(platformType) {
+    const heroContent = document.querySelector('.hero-content');
+    if (platformTemplates[platformType]) {
+        heroContent.classList.add('transition-out');
+        
+        setTimeout(() => {
+            heroContent.innerHTML = platformTemplates[platformType];
+            heroContent.classList.remove('transition-out');
+            void heroContent.offsetWidth; // Trigger reflow
+            heroContent.classList.add('transition-in');
+                    // Trigger a resize event
+            // Remove transition-in after animation
+            setTimeout(() => {
+                heroContent.classList.remove('transition-in');
+            }, 300);
+        }, 300);
+    }
+}
+
+function resetToOriginalContent() {
+    const heroContent = document.querySelector('.hero-content');
+    heroContent.classList.add('transition-out');
+    
+    setTimeout(() => {
+        heroContent.innerHTML = originalHeroContent;
+        heroContent.classList.remove('transition-out');
+        void heroContent.offsetWidth; // Trigger reflow
+        heroContent.classList.add('transition-in');
+        
+        // Remove transition-in after animation
+        setTimeout(() => {
+            heroContent.classList.remove('transition-in');
+        }, 300);
+    }, 300);
+}
+
+
+// Updated event delegation
+document.addEventListener('click', function(event) {
+    const platform = event.target.closest('.platform');
+    const backButton = event.target.closest('.back-button');
+    
+    if (platform) {
+        event.preventDefault();
+        showPlatformContent(platform.dataset.platform);
+    } else if (backButton) {
+        event.preventDefault();
+        resetToOriginalContent();
+    }
+});
+/* JavaScript Interaction Enhancers */
+const card = document.querySelector('.offer-card');
+
+// Parallax tilt effect
+card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const centerX = (rect.left + rect.right) / 2;
+    const centerY = (rect.top + rect.bottom) / 2;
+    
+    card.style.setProperty('--rotate-x', `${(centerY - e.clientY) / 8}deg`);
+    card.style.setProperty('--rotate-y', `${(e.clientX - centerX) / 8}deg`);
+});
+
+card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--rotate-x', '0deg');
+    card.style.setProperty('--rotate-y', '0deg');
+    card.style.setProperty('--scale', '1');
+});
+
+// Add these to your JS file
+document.documentElement.style.setProperty('--cosmic-primary', '#7F5AF0');
+document.documentElement.style.setProperty('--cosmic-secondary', '#2CB67D');
+
+// Random glitch effect
+setInterval(() => {
+    if(Math.random() > 0.8) {
+        document.documentElement.style.setProperty('--grid-color', 
+            `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`);
+        document.querySelector('.offer-card').style.animation = 'glitchBars 0.3s linear';
+        setTimeout(() => {
+            document.querySelector('.offer-card').style.animation = '';
+        }, 300);
+    }
+}, 5000);
+            });
+        </script>
+
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2 class="hero-title">Optimize Your Software Ecosystem</h2>
+                    <p class="hero-subtitle">Professional maintenance & development services for peak performance</p>
+                    <a href="#contact" class="cta-button">Schedule Consultation</a>
+                </div>
+                <div class="platform-icons">
+                    <div class="platform" data-platform="architecture">
+                        <img src="assets/platforms/architecture.svg" alt="Software Architecture" class="platform-icon">
+                        <span style="font-size:1.5rem;">Design</span>
+                    </div>
+                    <div class="platform" data-platform="mobile">
+                        <img src="assets/platforms/mobile.svg" alt="Mobile Development" class="platform-icon" />
+                        <span style="font-size:1.5rem;">Mobile</span>
+                    </div>
+                    <div class="platform" data-platform="web">
+                        <img src="assets/platforms/web.svg" alt="Web Development" class="platform-icon">
+                        <span style="font-size:1.5rem;">Web</span>
+                    </div>
+                    <div class="platform" data-platform="desktop">
+                        <img src="assets/platforms/desktop.svg" alt="Desktop Development" class="platform-icon">
+                        <span style="font-size:1.5rem;">Desktop</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="offer-section">
+            <div class="offer-card">
+                <h3>First-Time Customer Offer</h3>
+                <p>Get 10% off your initial maintenance project!</p>
+                <a href="tel:2029488888" class="cta-button secondary">Call Now →</a>
+            </div>
+            <div class="crt-overlay"></div>
+        </section>
+
+        <!-- Digital Transformation 2025 Section -->
+        <section class="digital-transformation">
+            <div class="section-header transformation-header-width">
+                <h2 class="transformation-header">Digital Transformation 2025</h2>
+                <p>Future-ready solutions powered by advanced technologies</p>
+            </div>
+            <div class="dt-grid">
+                <article class="dt-card ai-card">
+                    <div class="card-content">
+                        <img src="assets/ai-icon.svg" alt="AI Icon" class="dt-icon">
+                        <h3>Artificial Intelligence</h3>
+                        <p class="card-subtitle">Transform your business with intelligent automation</p>
+                        <div class="card-features">
+                            <div class="feature-item">
+                                <img src="assets/neural-network.svg" alt="Neural Network">
+                                <span>Predictive Analytics</span>
+                            </div>
+                            <div class="feature-item">
+                                <img src="assets/nlp.svg" alt="Natural Language">
+                                <span>Natural Language Processing</span>
+                            </div>
+                            <div class="feature-item">
+                                <img src="assets/automation.svg" alt="Automation">
+                                <span>Process Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-cta">
+                        <a href="#contact" class="cta-button">Explore AI Solutions</a>
+                    </div>
+                </article>
+
+                <article class="dt-card ml-card">
+                    <div class="card-content">
+                        <img src="assets/ml-icon.svg" alt="ML Icon" class="dt-icon">
+                        <h3>Machine Learning</h3>
+                        <p class="card-subtitle">Leverage data-driven insights for strategic decisions</p>
+                        <div class="card-features">
+                            <div class="feature-item">
+                                <img src="assets/predictive-modeling.svg" alt="Modeling">
+                                <span>Predictive Modeling</span>
+                            </div>
+                            <div class="feature-item">
+                                <img src="assets/data-mining.svg" alt="Data Mining">
+                                <span>Data Mining & Analysis</span>
+                            </div>
+                            <div class="feature-item">
+                                <img src="assets/recommendation.svg" alt="Recommendation">
+                                <span>Recommendation Systems</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-cta">
+                        <a href="#contact" class="cta-button">Explore ML Solutions</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="section-header">
+                <h2>Our Expertise</h2>
+                <p>Comprehensive solutions for your software needs</p>
+            </div>
+            <div class="services-grid">
+                <article class="service-card">
+                    <img src="assets/services/maintenance.svg" alt="Maintenance" class="service-icon">
+                    <h3>Proactive Maintenance</h3>
+                    <p>Continuous optimization and performance tuning for mission-critical systems</p>
+                </article>
+                <article class="service-card">
+                    <img src="assets/services/development.svg" alt="Development" class="service-icon">
+                    <h3>Custom Development</h3>
+                    <p>Tailored solutions built with modern architectures and best practices</p>
+                </article>
+                <article class="service-card">
+                    <img src="assets/services/consulting.svg" alt="Consulting" class="service-icon">
+                    <h3>Strategic Consulting</h3>
+                    <p>Architecture review, scalability planning, and technology roadmapping</p>
+                </article>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <div class="contact-content">
+                <div class="contact-cta">
+                    <h2>Ready to Transform Your Software?</h2>
+                    <a href="tel:2029488888" class="phone-cta-link">
+                        <div class="phone-cta">
+                            <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            <div class="phone-number">
+                                <span class="call-text" style="color:white;">Call us directly:</span>
+                                <span class="phone-link">(202) 948-8888</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/chimneywhite.svg" alt="Company Logo" class="footer-logo">
+                <p>Perfect Your Customer</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                <a href="#terms" class="footer-link">Terms of Service</a>
+            </div>
+        </div>
+        <p class="copyright">&copy; <span id="currentYear"></span> Perfect Your Customer. All rights reserved.</p>
+    </footer>
+
+    <script type="text/javascript">
+        // Update copyright year automatically
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+<script>
+    // Initialize Three.js scene
+    let scene, camera, renderer, material, mouse = { x: 0, y: 0 };
+    
+    function init() {
+        const hero = document.querySelector('.hero');
+        
+        scene = new THREE.Scene();
+        camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        
+        renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(hero.clientWidth, hero.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        hero.appendChild(renderer.domElement);
+    
+        // Create fullscreen plane for shader
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        
+        // Shader material
+        material = new THREE.ShaderMaterial({
+            uniforms: {
+                time: { value: 0 },
+                resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+                mouse: { value: new THREE.Vector2() },
+                isMobile: { value: window.innerWidth <= 768 }
+            },
+            vertexShader: `
+                varying vec2 vUv;
+                void main() {
+                    vUv = uv;
+                    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                }
+            `,
+            fragmentShader: `
+                uniform float time;
+                uniform vec2 resolution;
+                uniform vec2 mouse;
+                uniform bool isMobile;
+                varying vec2 vUv;
+                
+                #define PI 3.14159265359
+                
+                float scanline(vec2 uv) {
+                    return sin(uv.y * resolution.y * 1.0 + time * 3.0) * 0.03 + 0.97;
+                }
+                
+                float vignette(vec2 uv) {
+                    uv *= 1.0 - uv.yx;
+                    float vig = uv.x * uv.y * 12.0;
+                    return pow(vig, 0.3);
+                }
+                
+                vec3 palette(float t) {
+                    vec3 col = vec3(
+                        0.5 + 0.4 * sin(t * PI + 0.5),    // Softer cyan
+                        0.5 + 0.4 * sin(t * PI + 2.0),    // Softer magenta
+                        0.5 + 0.4 * sin(t * PI + 4.0)     // Softer yellow
+                    );
+                    return clamp(col, 0.0, 1.0) * 0.8 + 0.2; // Add white tint
+                }
+                
+                void main() {
+                    vec2 uv = vUv - 0.5;
+                    
+                    // Reduced perspective distortion
+                    uv *= 1.0 + length(uv) * 0.3;
+                    
+                    // Slower rotating grid
+                    float angle = time * 0.1;
+                    uv = mat2(cos(angle), -sin(angle), sin(angle), cos(angle)) * uv;
+                    vec2 gridUV = uv * 12.0;
+
+                    // Softer grid calculation
+                    float gridX = smoothstep(0.97, 0.98, fract(gridUV.x));
+                    float gridY = smoothstep(0.97, 0.98, fract(gridUV.y));
+                    float grid = (gridX + gridY) * 0.5;
+                    
+                    // Subtler hexagons
+                    vec2 hexUV = uv * 6.0;
+                    hexUV.y += time * 0.5;
+                    hexUV.x += sin(hexUV.y * 0.5 + time) * 0.3;
+                    float hex = length(abs(fract(hexUV) - 0.5));
+                    hex = smoothstep(0.3, 0.29, hex) * 0.4;
+                    
+                    // Reduced chromatic aberration
+                    vec3 color;
+                    for(int i = 0; i < 3; i++) {
+                        float t = time * 0.3 + float(i) * 0.05;
+                        vec2 offsetUV = uv * (1.0 + float(i) * 0.001);
+                        float pattern = sin(offsetUV.x * 15.0 + t) * 
+                                      cos(offsetUV.y * 12.0 + t) * 
+                                      sin(offsetUV.x * offsetUV.y * 20.0 + t);
+                        color[i] = pattern * 0.3 + 0.5;
+                    }
+                    
+                    // Color processing
+                    color = palette(length(uv) * 1.5 + time * 0.3);
+                    color *= mix(0.9, 1.1, scanline(vUv));
+                    color *= vignette(vUv);
+                    
+                    // Reduced grid visibility
+                    color = mix(color, vec3(1.0), grid * 0.05);
+                    
+                    // Subtler hexagons
+                    color += hex * vec3(0.05, 0.15, 0.25);
+                    
+                    // Softer mouse interaction
+                    if (!isMobile) {
+                        vec2 mouseUV = mouse * 0.5 + 0.5;
+                        float dist = length(vUv - mouseUV);
+                        color += smoothstep(0.3, 0.0, dist) * vec3(0.05, 0.1, 0.15);
+                        color *= 1.0 - smoothstep(0.0, 0.2, dist) * 0.1;
+                    } else {
+                        // Reduced mobile effect
+                        float pulse = sin(time * 1.5) * 0.5 + 0.5;
+                        color *= 1.0 + pulse * 0.05;
+                    }
+
+                    // Minimal CRT curvature
+                    vec2 screenUV = vUv * 2.0 - 1.0;
+                    float curve = dot(screenUV, screenUV) * 0.05;
+                    color *= 1.0 - curve * 0.3;
+                    
+                    // More transparent background
+                    gl_FragColor = vec4(color * 0.7, 0.8);
+                }
+            `
+        });
+    
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+    
+        // Handle resize
+        window.addEventListener('resize', onWindowResize, false);
+        
+        // Mouse movement
+        window.addEventListener('mousemove', (e) => {
+            if (window.innerWidth > 768) {
+                mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            }
+        });
+    }
+    
+    function onWindowResize() {
+    const hero = document.querySelector('.hero');
+    renderer.setSize(hero.clientWidth, hero.clientHeight);
+    material.uniforms.resolution.value.set(hero.clientWidth, hero.clientHeight);
+    camera.aspect = hero.clientWidth / hero.clientHeight;
+    camera.updateProjectionMatrix();
+}
+    
+    function animate() {
+        requestAnimationFrame(animate);
+        material.uniforms.time.value += 0.003; // Slower animation
+        if (window.innerWidth > 768) {
+            material.uniforms.mouse.value.set(mouse.x, mouse.y);
+        }
+        renderer.render(scene, camera);
+    }
+    
+    // Start the animation
+    init();
+    animate();
+</script>
+
+<style>
+/* Platform-Specific Styling */
+.platform-hero {
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* Architecture Theme */
+.architecture {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    color: white;
+}
+
+/* Mobile Theme */
+.mobile {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.device-mockups {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    position: relative;
+}
+
+.iphone {
+    width: 280px;
+    transform: rotate(-10deg);
+}
+
+.android {
+    width: 300px;
+    transform: rotate(10deg);
+}
+
+/* Web Theme */
+.web {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color: white;
+}
+
+.web-metrics {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.metric-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+/* Desktop Theme */
+.desktop {
+    background: linear-gradient(135deg, #3730a3 0%, #1e1b4b 100%);
+    color: white;
+}
+
+.os-icons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top:2rem;
+}
+
+.os-icons img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Detailed Content Styling */
+.platform-details {
+    padding:1rem;
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.approach-step {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.step-number {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    background: var(--primary);
+    color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: 0.5rem;
+}
+
+.case-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.case-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.case-stats {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.case-stats li {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--primary);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .device-mockups {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .iphone, .android {
+        transform: none;
+        width: 70%;
+    }
+    
+    .case-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .web-metrics {
+        display:inline-block;
+    margin:0 auto;
+    }
+    
+    
+}
+
+@media (max-width: 480px) {
+    .approach-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
+</html>
+
