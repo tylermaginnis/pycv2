@@ -1208,6 +1208,13 @@ html {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: linear-gradient(135deg, var(--primary), var(--deep-purple));
+    animation: gradientBG 15s ease infinite;
+
+}
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
 }
 
 .contact-cta {
