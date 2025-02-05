@@ -1015,3 +1015,142 @@ html {
 .offer-section::before {
     --grid-color: rgba(255, 255, 255, 0.03); /* Softer grid */
 }
+
+/* Digital Transformation Section */
+.digital-transformation {
+    padding: 4rem 1rem;
+    background: linear-gradient(to right, #0f172a, #1e3a8a);
+    color: white;
+    z-index: -1;
+}
+
+.dt-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+
+
+.dt-card:hover {
+    transform: translateY(-5px);
+}
+
+.dt-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
+    align-items: center; /* Add this */
+}
+.dt-icon {
+    margin-bottom: 1.5rem;
+    position: relative;
+    width: 80%;
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
+    margin:0 auto;
+    align-items: center; /* Add this */
+}
+
+.dt-icon img {
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto;
+}
+
+.dt-icon span {
+    margin-top: 0.5rem; /* Add some space between image and text */
+    text-align: center; /* Center the text */
+    display: block; /* Add this to make the span a block element */
+    width: 100%; /* Ensure the span takes full width */
+}
+.card-content h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-align:center;
+}
+
+.card-subtitle {
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    font-size:2rem;
+    text-align:center;
+}
+
+.card-features {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.feature-item {
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    display:grid;
+    text-align:center;
+}
+.feature-item {
+    font-size:2rem; clear:both;
+}
+
+.feature-item img {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto !important;
+}
+
+.card-cta {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Gradient Accents */
+.ai-card {
+    border-left: 4px solid #7c3aed;
+}
+
+.ml-card {
+    border-left: 4px solid #10b981;
+}
+
+@media (max-width: 768px) {
+    .dt-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dt-card {
+        padding: 1.5rem;
+    }
+
+    .transformation-header
+    {
+        font-size:2rem !important;
+        
+    }
+    .transformation-header-width {
+        width:100% !important;
+        max-width:80% !important;
+    }
+
+}
+
+.transformation-header
+{
+    font-size:8rem ;
+    
+}
+.transformation-header-width {
+    width:100%;
+    max-width:80%;
+}
