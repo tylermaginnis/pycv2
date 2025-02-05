@@ -1191,7 +1191,124 @@ html {
         margin-top:3rem !important;
     }
 }
+.transformation-header {
+    font-size: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+    color: white !important;
+}
 
+.transformation-header-width {
+    width: 80% !important;
+    max-width: 1000px !important;
+}
+
+.contact {
+    padding: 4rem 1rem;
+    background: var(--primary);
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--primary), var(--deep-purple));
+}
+
+.contact-cta {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+.contact-cta {
+    color:white;
+}
+
+.phone-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.phone-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    fill: white;
+    transition: transform 0.3s ease;
+}
+
+.phone-icon:hover {
+    transform: scale(1.1);
+}
+
+.phone-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.call-text {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.phone-link {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.phone-link:hover {
+    opacity: 1;
+    color: var(--neon-cyan);
+}
+
+.cta-button.large {
+    font-size: 1.5rem;
+    padding: 1.5rem 4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.cta-button.large:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
+}
+
+.button-phone-icon {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+}
+
+@media (max-width: 768px) {
+    .phone-link {
+        font-size: 1.8rem;
+    }
+    
+    .phone-cta {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .phone-number {
+        align-items: center;
+    }
+    
+    .cta-button.large {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+    }
+}
 /* Mobile Layout */
 @media (max-width: 768px) {
     .dt-grid {
@@ -1206,7 +1323,7 @@ html {
     .dt-icon {
         margin-bottom: 1.5rem;
         position: relative;
-        width: 35%;
+        width: 20%;
         display: flex; /* Add this */
         flex-direction: column; /* Add this */
         margin:0 auto;
