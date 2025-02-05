@@ -1050,15 +1050,7 @@ html {
     flex-direction: column; /* Add this */
     align-items: center; /* Add this */
 }
-.dt-icon {
-    margin-bottom: 1.5rem;
-    position: relative;
-    width: 80%;
-    display: flex; /* Add this */
-    flex-direction: column; /* Add this */
-    margin:0 auto;
-    align-items: center; /* Add this */
-}
+
 
 .dt-icon img {
     width: 100%; /* Ensure the image fills the container */
@@ -1124,25 +1116,101 @@ html {
     border-left: 4px solid #10b981;
 }
 
+/* Digital Transformation Section - Desktop Layout */
+@media (min-width: 769px) {
+    .dt-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 1400px;
+    }
+
+    .dt-card {
+        padding: 2rem;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+
+    .transformation-header {
+        font-size: 2.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    .dt-icon {
+        margin-bottom: 1.5rem;
+        position: relative;
+        width: 20%;
+        display: flex; /* Add this */
+        flex-direction: column; /* Add this */
+        margin:0 auto;
+        align-items: center; /* Add this */
+    }
+    .transformation-header-width {
+        width: 80% !important;
+        max-width: 1000px !important;
+    }
+
+    .card-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .card-features {
+        display: flex; /* Change to flex */
+        flex-direction: row; /* Make it a row */
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .feature-item {
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0.5rem;
+        display: flex; /* Change to flex */
+        flex-direction: column; /* Keep as column for vertical alignment */
+        text-align: center;
+    }
+    .card-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-item {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+    .feature-item img {
+        margin-top:3rem !important;
+    }
+}
+
+/* Mobile Layout */
 @media (max-width: 768px) {
     .dt-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .dt-card {
         padding: 1.5rem;
     }
 
-    .transformation-header
-    {
-        font-size:2rem !important;
-        
+    .transformation-header {
+        font-size: 2rem !important;
     }
+    
     .transformation-header-width {
-        width:100% !important;
-        max-width:80% !important;
+        width: 100% !important;
+        max-width: 80% !important;
     }
 
+    .dt-card h3, 
+    .dt-card p, 
+    .dt-card .card-cta {
+        text-align: center;
+    }
 }
 
 .transformation-header
