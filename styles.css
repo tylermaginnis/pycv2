@@ -91,7 +91,6 @@ body {
 
 /* Hero Section */
 .hero {
-    padding: 4rem 1rem;
     background: linear-gradient(to right, #eff6ff, #dbeafe);
 }
 
@@ -397,7 +396,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100% !important;
     z-index: 1; /* Keep below content */
 }
 
@@ -418,6 +417,7 @@ body {
         width: 100%;
         max-width: 300px;
     }
+    .device-mockups {max-width:80% !important;}
 }
 
 /* Add these transition styles */
@@ -542,7 +542,7 @@ html {
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2.5rem;
+    width:100%;
     box-shadow: 
         0 8px 32px rgba(0, 243, 255, 0.1),
         0 -8px 32px rgba(255, 0, 255, 0.1),
@@ -550,6 +550,7 @@ html {
     position: relative;
     overflow: hidden;
     color: #ffffff;
+    margin:0 auto;
 }
 
 /* Holographic Border Effect */
@@ -586,7 +587,7 @@ html {
         0 0 8px rgba(0, 243, 255, 0.4),
         0 0 16px rgba(0, 243, 255, 0.2);
     position: relative;
-    display: inline-block;
+    text-align:center;
 }
 
 .glassmorphic-card h2::after {
@@ -603,7 +604,6 @@ html {
 /* Process Timeline Redesign */
 .approach-process {
     position: relative;
-    padding: 3rem 0;
 }
 
 .process-line {
@@ -622,9 +622,7 @@ html {
 
 .approach-step {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    margin-bottom: 4rem;
+    grid-template-columns: 1fr;
     position: relative;
     transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
@@ -664,7 +662,7 @@ html {
     position: absolute;
     bottom: -4.5rem;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-80%);
     height: 4.5rem;
     width: 2px;
     background: linear-gradient(
@@ -676,7 +674,8 @@ html {
 
 /* Step Content Styling */
 .step-content {
-    padding: 2rem;
+    padding: 1rem;
+    left:1rem;
     background: rgba(10, 10, 15, 0.4);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -729,24 +728,38 @@ html {
     transform: rotate(360deg);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .glassmorphic-card {
-        padding: 1.5rem;
-        margin: 1rem;
+        width: calc(100% - 2rem); /* Ensure proper width calculation */
+        box-sizing: border-box; /* Include padding in width calculation */
     }
-    
+
     .process-line {
-        left: 2.5rem;
+        left: 1.5rem; /* Adjust positioning for smaller screens */
     }
-    
-    .approach-step {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+
+
+
+    .approach-process {
+        padding: 0rem !important;
     }
-    
-    .step-connector {
-        display: none;
+
+    .platform-hero {
+        margin:0 auto;
+        width:90%;
+    }
+
+    .step-visual {
+        width: 3rem; /* Fixed width for number circles */
+    }
+
+    .step-content {
+        min-width: 0; /* Allow content to shrink */
+    }
+
+    .step-features li {
+        word-wrap: break-word; /* Handle long text */
+        overflow-wrap: anywhere;
     }
 }
 
@@ -829,6 +842,8 @@ html {
     border-radius: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
     max-width: 350px;
+    margin:0 auto;
+    margin-bottom:1rem;
 }
 
 .metric-value {
