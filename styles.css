@@ -955,7 +955,60 @@ html {
     margin-bottom: 2rem;
     position: relative;
 }
+/* Privacy Policy Specific Styles */
+.privacy-policy {
+    padding: 4rem 1rem;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    color: white;
+}
 
+.policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.policy-content h3 {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.policy-content ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+}
+
+.policy-content li {
+    margin-bottom: 0.5rem;
+}
+
+.policy-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.policy-content a {
+    color: #7F5AF0;
+    text-decoration: underline;
+}
+
+.policy-content a:hover {
+    color: #2CB67D;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .policy-content {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .policy-content h3 {
+        font-size: 1.3rem;
+    }
+}
 /* Add text background bars */
 .offer-card p::after {
     content: '';
