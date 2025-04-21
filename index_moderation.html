@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moderated Deployment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    .articles {
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    .controls {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button.secondary {
+      background-color: #555;
+    }
+    button.secondary:hover {
+      background-color: #444;
+    }
+    .status {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #dff0d8;
+      color: #3c763d;
+    }
+    .error {
+      background-color: #f2dede;
+      color: #a94442;
+    }
+    .header-banner {
+      background-color: #2c3e50;
+      color: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .header-banner h1 {
+      color: white;
+      margin: 0;
+    }
+    .header-banner p {
+      margin: 5px 0 0 0;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-banner">
+    <h1>Perfect Your Customer - Moderated Deployment</h1>
+    <p>Select which articles to build and deploy to the live site</p>
+  </div>
+  
+  <div class="controls">
+    <button id="buildBtn">Build Selected Articles</button>
+    <button id="deployBtn" class="secondary">Deploy After Build</button>
+    <button id="selectAllBtn">Select All</button>
+    <button id="deselectAllBtn">Deselect All</button>
+  </div>
+  
+  <div id="status" class="status" style="display: none;"></div>
+  
+  <div class="articles">
+    <h2>Published Articles (<span id="publishedCount">0</span>)</h2>
+    <table id="publishedTable">
+      <thead>
+        <tr>
+          <th width="50">Build</th>
+          <th>Silo</th>
+          <th>Title</th>
+          <th>Last Modified</th>
+        </tr>
+      </thead>
+      <tbody id="publishedTableBody">
+        <!-- Published articles will be loaded here -->
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="articles">
+    <h2>Unpublished Articles (<span id="unpublishedCount">0</span>)</h2>
+    <table id="unpublishedTable">
+      <thead>
+        <tr>
+          <th width="50">Build</th>
+          <th>Silo</th>
+          <th>Title</th>
+          <th>Last Modified</th>
+        </tr>
+      </thead>
+      <tbody id="unpublishedTableBody">
+        <!-- Unpublished articles will be loaded here -->
+      </tbody>
+    </table>
+  </div>
+  
+  <script>
+    // DOM elements
+    const buildBtn = document.getElementById('buildBtn');
+    const deployBtn = document.getElementById('deployBtn');
+    const selectAllBtn = document.getElementById('selectAllBtn');
+    const deselectAllBtn = document.getElementById('deselectAllBtn');
+    const statusDiv = document.getElementById('status');
+    const publishedCount = document.getElementById('publishedCount');
+    const unpublishedCount = document.getElementById('unpublishedCount');
+    const publishedTableBody = document.getElementById('publishedTableBody');
+    const unpublishedTableBody = document.getElementById('unpublishedTableBody');
+    
+    // Load articles on page load
+    document.addEventListener('DOMContentLoaded', fetchArticles);
+    
+    // Fetch articles from the API
+    function fetchArticles() {
+      console.log('Fetching articles from API...');
+      fetch('/api/articles')
+        .then(response => response.json())
+        .then(data => {
+          console.log('API Response:', data);
+          // Update published articles
+          publishedCount.textContent = data.publishedArticles.length;
+          publishedTableBody.innerHTML = data.publishedArticles.map(article => `
+            <tr>
+              <td><input type="checkbox" class="article-checkbox" data-silo="${article.silo}" data-title="${article.title}" data-url-path="${article.urlPath || ''}" checked></td>
+              <td>${article.silo}</td>
+              <td>${article.title}</td>
+              <td>${article.lastModified}</td>
+            </tr>
+          `).join('');
+          
+          // Update unpublished articles
+          unpublishedCount.textContent = data.unpublishedArticles.length;
+          unpublishedTableBody.innerHTML = data.unpublishedArticles.map(article => `
+            <tr>
+              <td><input type="checkbox" class="article-checkbox" data-silo="${article.silo}" data-title="${article.title}" data-url-path="${article.urlPath || ''}"></td>
+              <td>${article.silo}</td>
+              <td>${article.title}</td>
+              <td>${article.lastModified}</td>
+            </tr>
+          `).join('');
+          
+          // Re-attach event listeners
+          attachEventListeners();
+        })
+        .catch(error => {
+          console.error('Error fetching articles:', error);
+          showStatus('Error loading articles: ' + error.message, true);
+        });
+    }
+    
+    // Attach event listeners
+    function attachEventListeners() {
+      // Event listeners for control buttons
+      buildBtn.addEventListener('click', buildSelectedArticles);
+      deployBtn.addEventListener('click', deployAfterBuild);
+      selectAllBtn.addEventListener('click', selectAll);
+      deselectAllBtn.addEventListener('click', deselectAll);
+    }
+    
+    function selectAll() {
+      document.querySelectorAll('.article-checkbox').forEach(cb => cb.checked = true);
+    }
+    
+    function deselectAll() {
+      document.querySelectorAll('.article-checkbox').forEach(cb => cb.checked = false);
+    }
+    
+    function showStatus(message, isError = false) {
+      statusDiv.textContent = message;
+      statusDiv.style.display = 'block';
+      if (isError) {
+        statusDiv.className = 'status error';
+      } else {
+        statusDiv.className = 'status success';
+      }
+    }
+    
+    function buildSelectedArticles() {
+      // Get selected articles
+      const selectedArticles = Array.from(document.querySelectorAll('.article-checkbox'))
+        .filter(cb => cb.checked)
+        .map(cb => ({
+          silo: cb.dataset.silo,
+          title: cb.dataset.title,
+          urlPath: cb.dataset.urlPath
+        }));
+        
+      if (selectedArticles.length === 0) {
+        showStatus('Please select at least one article to build', true);
+        return;
+      }
+      
+      showStatus('Building selected articles. This may take a few minutes...');
+      
+      // Send the selected articles to the server
+      fetch('/api/build', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ articles: selectedArticles })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          showStatus('Build completed successfully! ' + data.message);
+        } else {
+          showStatus('Build failed: ' + data.message, true);
+        }
+      })
+      .catch(error => {
+        showStatus('Error: ' + error.message, true);
+      });
+    }
+    
+    function deployAfterBuild() {
+      showStatus('Deploying to GitHub Pages...');
+      
+      fetch('/api/deploy', {
+        method: 'POST'
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          showStatus('Deployment completed successfully!');
+        } else {
+          showStatus('Deployment failed: ' + data.message, true);
+        }
+      })
+      .catch(error => {
+        showStatus('Error: ' + error.message, true);
+      });
+    }
+  </script>
+</body>
+</html> 
